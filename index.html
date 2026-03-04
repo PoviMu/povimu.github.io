@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuNode | High-Performance Cloud Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0070f3;
+            --primary-glow: rgba(0, 112, 243, 0.3);
+            --accent: #00dfd8;
+            --bg: #ffffff;
+            --text-dark: #111111;
+            --text-muted: #666666;
+            --card-border: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-dark); margin: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
+        .logo { font-weight: 800; font-size: 22px; color: var(--text-dark); text-decoration: none; letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero Section */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero h1 { font-size: clamp(40px, 8vw, 72px); font-weight: 800; letter-spacing: -3px; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(to bottom right, #000 60%, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); font-size: 20px; max-width: 600px; margin: 0 auto 40px; }
+
+        /* Badge/Status */
+        .status-badge { display: inline-flex; align-items: center; background: #e6f6ff; color: var(--primary); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
+        .dot { width: 8px; height: 8px; background: #00c853; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #00c853; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        /* Pricing Cards */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin: 60px 0 100px; }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-color: var(--primary); }
+        .card.popular { background: #000; color: #fff; border: none; }
+        .card.popular h3 { color: var(--accent); }
+        .card.popular .features-list li { color: #ccc; }
+        .card.popular .btn { background: #fff; color: #000; }
+
+        .card h3 { margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; }
+        .price { font-size: 56px; font-weight: 800; margin: 24px 0; letter-spacing: -2px; }
+        .price span { font-size: 18px; color: var(--text-muted); font-weight: 400; letter-spacing: 0; }
+
+        .features-list { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
+        .features-list li { margin-bottom: 16px; font-size: 15px; display: flex; align-items: center; }
+        .features-list li::before { content: "→"; margin-right: 12px; color: var(--primary); font-weight: bold; }
+
+        .btn { display: block; text-align: center; background: var(--primary); color: #fff; padding: 18px; text-decoration: none; border-radius: 14px; font-weight: 700; transition: 0.3s; font-size: 16px; }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 10px 20px var(--primary-glow); }
+
+        /* Footer */
+        footer { border-top: 1px solid var(--card-border); padding: 80px 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-logo { font-size: 24px; font-weight: 800; margin-bottom: 16px; display: block; color: #000; text-decoration: none; }
+        .footer-info p { font-size: 14px; color: var(--text-muted); max-width: 300px; }
+        .footer-col h4 { font-size: 14px; text-transform: uppercase; margin-bottom: 24px; color: #000; }
+        .footer-col a { display: block; font-size: 14px; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; cursor: pointer; }
+        .footer-col a:hover { color: var(--primary); }
+
+        /* Modal for Offer */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 2000; overflow-y: auto; }
+        .modal-inner { background: #fff; margin: 40px auto; padding: 60px; max-width: 800px; border-radius: 32px; position: relative; }
+        .close-modal { position: absolute; top: 30px; right: 30px; font-size: 32px; cursor: pointer; color: #ccc; }
+        .legal-content { font-size: 14px; color: #444; text-align: justify; line-height: 1.8; }
+        .legal-content h2 { color: #000; margin-top: 40px; }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 48px; }
+            .card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">MuNode</a>
+    <div class="nav-links">
+        <a href="#pricing">Тарифы</a>
+        <a href="#infra">Инфраструктура</a>
+        <a href="https://t.me/povimu">Поддержка</a>
+    </div>
+</nav>
+
+<div class="container">
+    <section class="hero">
+        <div class="status-badge"><span class="dot"></span> Frankfurt Region Online</div>
+        <h1>Next-Gen Networking.</h1>
+        <p>Аренда выделенных каналов на базе Ryzen 9 9950X. Скорость до 25 Гбит/с. Задержка до минимума.</p>
+    </section>
+
+    <section id="pricing" class="pricing-grid">
+        <div class="card">
+            <h3>Минимум</h3>
+            <div class="price">100 ₽ <span>/ мес</span></div>
+            <ul class="features-list">
+                <li>Трафик: 50 ГБ</li>
+                <li>Локация: Frankfurt-DE</li>
+                <li>Ryzen 9 9950X Core</li>
+                <li>Порт: 25 Gbps</li>
+            </ul>
+            <a href="https://t.me/povimu" class="btn">Подключить</a>
+        </div>
+
+        <div class="card popular">
+            <h3>Ультра</h3>
+            <div class="price">250 ₽ <span>/ мес</span></div>
+            <ul class="features-list">
+                <li><b>БЕЗЛИМИТНЫЙ трафик</b></li>
+                <li>Максимальный приоритет</li>
+                <li>Relay-туннелирование</li>
+                <li>Ранний доступ к RU узлу</li>
+            </ul>
+            <a href="https://t.me/povimu" class="btn">Заказать сейчас</a>
+        </div>
+
+        <div class="card">
+            <h3>Стандарт</h3>
+            <div class="price">150 ₽ <span>/ мес</span></div>
+            <ul class="features-list">
+                <li>Трафик: 150 ГБ</li>
+                <li>Высокий приоритет</li>
+                <li>Оптимизация под RDP</li>
+                <li>Техподдержка 24/7</li>
+            </ul>
+            <a href="https://t.me/povimu" class="btn">Выбрать</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <a href="#" class="footer-logo">MuNode</a>
+                <p>Предоставление профессиональной облачной инфраструктуры и высокоскоростных сетевых решений.</p>
+                <p style="margin-top: 20px;">ИНН: 564606551823<br>Самозанятый исполнитель</p>
+            </div>
+            <div class="footer-col">
+                <h4>Продукт</h4>
+                <a href="#pricing">Тарифные планы</a>
+                <a href="#infra">Инфраструктура</a>
+                <a href="https://t.me/povimu">Техподдержка</a>
+            </div>
+            <div class="footer-col">
+                <h4>Юридический отдел</h4>
+                <a onclick="toggleModal('offer')">Публичная оферта</a>
+                <a onclick="toggleModal('privacy')">Политика конфиденциальности</a>
+                <a onclick="toggleModal('rules')">Правила сервиса</a>
+            </div>
+        </div>
+        <div style="font-size: 12px; color: #aaa; text-align: center;">&copy; 2026 MuNode Cloud Infrastructure. Все права защищены.</div>
+    </div>
+</footer>
+
+<div id="legalModal" class="modal">
+    <div class="modal-inner">
+        <span class="close-modal" onclick="toggleModal()">&times;</span>
+        <div id="legalContent" class="legal-content">
+            </div>
+    </div>
+</div>
+
+<script>
+    function toggleModal(type) {
+        const modal = document.getElementById('legalModal');
+        const content = document.getElementById('legalContent');
+        
+        if (!type) {
+            modal.style.display = 'none';
+            return;
+        }
+
+        const legalTexts = {
+            offer: `
+                <h1>Публичная оферта</h1>
+                <p>Настоящая Публичная оферта является официальным предложением Исполнителя (ИНН 564606551823) заключить Договор об оказании услуг в соответствии с п. 2 ст. 437 ГК РФ.</p>
+                <h2>1. Предмет договора</h2>
+                <p>Исполнитель обязуется оказать Услуги по предоставлению доступа к вычислительным мощностям и сетевым интерфейсам сервера, а Заказчик обязуется принять и оплатить их. Услуги предоставляются в формате SaaS (Программное обеспечение как услуга).</p>
+                <h2>2. Порядок оплаты</h2>
+                <p>Оплата производится в форме 100% предоплаты через доступные платежные шлюзы. Доступ предоставляется на 30 календарных дней с момента совершения платежа.</p>
+                <h2>3. Ответственность</h2>
+                <p>Исполнитель гарантирует доступность узла 99.9%. Исполнитель не несет ответственности за использование ресурсов Заказчиком в противоправных целях.</p>
+                <h2>4. Возврат средств</h2>
+                <p>Согласно законодательству РФ, возврат за цифровые услуги надлежащего качества, предоставленные в полном объеме, не осуществляется.</p>
+                <p><i>Реквизиты: Самозанятый ИНН 564606551823.</i></p>
+            `,
+            privacy: `
+                <h1>Политика конфиденциальности</h1>
+                <p>Мы уважаем вашу приватность. MuNode не собирает, не хранит и не передает третьим лицам данные о трафике своих пользователей.</p>
+                <h2>1. Собираемые данные</h2>
+                <p>Для активации услуги нам требуется только ваш идентификатор Telegram. Мы не запрашиваем паспортные данные или адреса.</p>
+                <h2>2. Безопасность</h2>
+                <p>Все платежные операции проходят на стороне защищенного банковского шлюза. Мы не имеем доступа к данным ваших карт.</p>
+            `,
+            rules: `
+                <h1>Правила использования (AUP)</h1>
+                <p>Пользуясь услугами MuNode, вы соглашаетесь с тем, что ресурсы сервера не будут использованы для:</p>
+                <ul>
+                    <li>Массовых рассылок (СПАМ);</li>
+                    <li>Проведения сетевых атак (DDoS);</li>
+                    <li>Распространения вредоносного ПО;</li>
+                    <li>Нарушения авторских прав.</li>
+                </ul>
+                <p>Нарушение правил ведет к блокировке доступа без возврата средств.</p>
+            `
+        };
+
+        content.innerHTML = legalTexts[type];
+        modal.style.display = 'block';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('legalModal')) toggleModal();
+    }
+</script>
+
+</body>
+</html>
