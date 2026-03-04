@@ -30,19 +30,18 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* ИСПРАВЛЕННЫЙ БЛОК HERO */
         .hero { padding: 120px 0 80px; text-align: center; }
         .hero h1 { 
-            font-size: clamp(42px, 8vw, 76px); 
+            font-size: clamp(40px, 8vw, 72px); 
             font-weight: 800; 
             letter-spacing: -3px; 
-            line-height: 1.2; /* Увеличено, чтобы избежать наложения */
-            margin-bottom: 32px; 
+            line-height: 1.2;
+            margin-bottom: 48px;
             background: linear-gradient(to bottom right, #000 60%, #666); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
-        .hero p { color: var(--text-muted); font-size: clamp(18px, 2vw, 22px); max-width: 700px; margin: 0 auto 40px; line-height: 1.5; }
+        .hero p { color: var(--text-muted); font-size: 20px; max-width: 600px; margin: 0 auto 40px; }
 
         .status-badge { display: inline-flex; align-items: center; background: #e6f6ff; color: var(--primary); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
         .dot { width: 8px; height: 8px; background: #00c853; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #00c853; animation: pulse 2s infinite; }
@@ -70,21 +69,21 @@
         footer { border-top: 1px solid var(--card-border); padding: 80px 0 40px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
         .footer-logo { font-size: 24px; font-weight: 800; margin-bottom: 16px; display: block; color: #000; text-decoration: none; }
-        .footer-info p { font-size: 14px; color: var(--text-muted); max-width: 350px; margin-bottom: 8px; }
+        .footer-info p { font-size: 14px; color: var(--text-muted); max-width: 300px; }
         .footer-col h4 { font-size: 14px; text-transform: uppercase; margin-bottom: 24px; color: #000; }
         .footer-col a { display: block; font-size: 14px; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; cursor: pointer; }
         .footer-col a:hover { color: var(--primary); }
 
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 2000; overflow-y: auto; }
-        .modal-inner { background: #fff; margin: 40px auto; padding: 60px; max-width: 850px; border-radius: 32px; position: relative; }
+        .modal-inner { background: #fff; margin: 40px auto; padding: 60px; max-width: 800px; border-radius: 32px; position: relative; }
         .close-modal { position: absolute; top: 30px; right: 30px; font-size: 32px; cursor: pointer; color: #ccc; }
         .legal-content { font-size: 14px; color: #444; text-align: justify; line-height: 1.8; }
-        .legal-content h1, .legal-content h2 { color: #000; margin-top: 35px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .legal-content h1, .legal-content h2 { color: #000; margin-top: 30px; }
 
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 44px; letter-spacing: -2px; }
-            .modal-inner { padding: 40px 20px; width: 95%; margin: 20px auto; }
+            .hero h1 { font-size: 48px; margin-bottom: 32px; }
+            .card { padding: 30px; }
         }
     </style>
 </head>
@@ -150,8 +149,8 @@
             <div class="footer-info">
                 <a href="#" class="footer-logo">MuNode</a>
                 <p>Профессиональная облачная инфраструктура и высокоскоростные сетевые решения.</p>
-                <p style="margin-top: 20px; font-weight: 600; color: #000;">
-                    Шишечкин Владислав Васильевич<br>
+                <p style="margin-top: 20px;">
+                    Исполнитель: Шишечкин Владислав Васильевич<br>
                     ИНН: 564606551823<br>
                     Email: povimuse@gmail.com<br>
                     Статус: Самозанятый
@@ -163,12 +162,12 @@
                 <a href="https://t.me/povimu">Техподдержка</a>
             </div>
             <div class="footer-col">
-                <h4>Юридическая информация</h4>
+                <h4>Юридический отдел</h4>
                 <a onclick="toggleModal('offer')">Публичная оферта</a>
                 <a onclick="toggleModal('privacy')">Политика конфиденциальности</a>
             </div>
         </div>
-        <div style="font-size: 12px; color: #aaa; text-align: center;">&copy; 2026 MuNode Cloud Infrastructure. Все права защищены.</div>
+        <div style="font-size: 12px; color: #aaa; text-align: center;">&copy; 2026 MuNode Cloud Infrastructure.</div>
     </div>
 </footer>
 
@@ -188,32 +187,27 @@
         const legalTexts = {
             offer: `
                 <h1>Публичная оферта</h1>
-                <p>Настоящая Публичная оферта является официальным предложением Исполнителя (Шишечкин Владислав Васильевич, ИНН 564606551823) заключить Договор об оказании услуг в соответствии с п. 2 ст. 437 ГК РФ. Акцептом признается совершение конклюдентных действий, предусмотренных Договором.</p>
-                
+                <p>Настоящая Публичная оферта является официальным предложением Исполнителя (Шишечкин Владислав Васильевич, ИНН 564606551823) заключить Договор об оказании услуг в соответствии с п. 2 ст. 437 ГК РФ.</p>
                 <h2>1. Предмет договора</h2>
-                <p>Исполнитель обязуется оказать Заказчику Услуги (предоставление доступа к вычислительным мощностям), а Заказчик обязуется оплатить их. Наименование, количество и условия оказания Услуг определяются при оформлении заявки или устанавливаются на Сайте.</p>
-                
-                <h2>2. Порядок акцепта</h2>
-                <p>Договор заключается путем акцепта через конклюдентные действия: регистрацию учетной записи, оформление заявки, оплату Услуг Заказчиком или начало оказания Услуг Исполнителем.</p>
-                
-                <h2>3. Ответственность и Форс-мажор</h2>
-                <p>Стороны освобождаются от ответственности за неисполнение обязательств вследствие непреодолимой силы (запретные действия властей, стихийные бедствия). Если такие обстоятельства действуют более 60 рабочих дней, любая Сторона вправе отказаться от Договора.</p>
-                
-                <h2>4. Разрешение споров</h2>
-                <p>Досудебный порядок урегулирования споров обязателен. Срок рассмотрения претензии — 30 рабочих дней. Судебное разбирательство осуществляется в соответствии с законодательством РФ.</p>
-                
-                <div style="margin-top:40px; border-top:2px solid #000; padding-top:20px; font-style: normal; color: #000;">
-                    <strong>РЕКВИЗИТЫ ИСПОЛНИТЕЛЯ:</strong><br><br>
-                    <strong>ФИО:</strong> Шишечкин Владислав Васильевич<br>
-                    <strong>ИНН:</strong> 564606551823<br>
-                    <strong>Контактный e-mail:</strong> povimuse@gmail.com<br>
-                    <strong>Telegram:</strong> @povimu
+                <p>Исполнитель обязуется оказать Заказчику Услуги (предоставление доступа к вычислительным мощностям), а Заказчик обязуется оплатить их. Договор считается заключенным с момента совершения Заказчиком акцепта (оплаты или регистрации).</p>
+                <h2>2. Порядок оказания услуг</h2>
+                <p>Услуги оказываются лично Исполнителем или с привлечением третьих лиц. Заказчик получает доступ к ресурсам после совершения конклюдентных действий (оплаты).</p>
+                <h2>3. Ответственность и форс-мажор</h2>
+                <p>Стороны освобождаются от ответственности в случае наступления обстоятельств непреодолимой силы (стихийные бедствия, действия властей). Исполнитель не несет ответственности за сбои по вине Заказчика.</p>
+                <h2>4. Досудебный порядок</h2>
+                <p>Досудебный порядок урегулирования споров является обязательным. Срок рассмотрения претензии — 30 рабочих дней.</p>
+                <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                    <strong>Реквизиты Исполнителя:</strong><br>
+                    ФИО: Шишечкин Владислав Васильевич<br>
+                    ИНН: 564606551823<br>
+                    E-mail: povimuse@gmail.com<br>
+                    Telegram: @povimu
                 </div>
             `,
             privacy: `
                 <h1>Политика конфиденциальности</h1>
-                <p>При реализации Договора Стороны обеспечивают конфиденциальность и безопасность персональных данных в соответствии с ФЗ № 152-ФЗ «О персональных данных» и ФЗ № 149-ФЗ «Об информации».</p>
-                <p>Исполнитель использует данные исключительно для качественного оказания Услуг и обязуется не разглашать полученную информацию третьим лицам без законных оснований.</p>
+                <p>Исполнитель обеспечивает конфиденциальность и безопасность персональных данных в соответствии с ФЗ № 152-ФЗ «О персональных данных».</p>
+                <p>Данные используются исключительно для качественного оказания Услуг и не передаются третьим лицам без законных оснований.</p>
             `
         };
         content.innerHTML = legalTexts[type];
