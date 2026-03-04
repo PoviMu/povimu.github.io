@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MuNode | High-Performance Cloud Solutions</title>
+    <title>MuNode | Аренда вычислительных мощностей</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
         * { box-sizing: border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text-dark); margin: 0; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: saturate(180%) blur(20px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
         .logo { font-weight: 800; font-size: 22px; color: var(--text-dark); text-decoration: none; letter-spacing: -1px; }
         .nav-links { display: flex; gap: 32px; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: 0.2s; }
@@ -32,58 +32,74 @@
 
         .hero { padding: 120px 0 80px; text-align: center; }
         .hero h1 { 
-            font-size: clamp(40px, 8vw, 72px); 
+            font-size: clamp(38px, 6vw, 64px); 
             font-weight: 800; 
-            letter-spacing: -3px; 
-            line-height: 1.2;
-            margin-bottom: 48px;
-            background: linear-gradient(to bottom right, #000 60%, #666); 
+            letter-spacing: -2px; 
+            line-height: 1.1; 
+            margin-bottom: 32px; 
+            background: linear-gradient(to bottom right, #000 60%, #555); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
-        .hero p { color: var(--text-muted); font-size: 20px; max-width: 600px; margin: 0 auto 40px; }
+        .hero p { color: var(--text-muted); font-size: clamp(18px, 2vw, 20px); max-width: 700px; margin: 0 auto 40px; }
 
         .status-badge { display: inline-flex; align-items: center; background: #e6f6ff; color: var(--primary); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 700; margin-bottom: 24px; }
         .dot { width: 8px; height: 8px; background: #00c853; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #00c853; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin: 60px 0 100px; }
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-color: var(--primary); }
-        .card.popular { background: #000; color: #fff; border: none; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin: 60px 0 100px; align-items: center; }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; transition: 0.3s; height: 100%; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--primary); }
+        
+        .card.popular { background: #111; color: #fff; border: none; transform: scale(1.05); box-shadow: 0 30px 60px rgba(0,0,0,0.15); z-index: 2; }
+        .card.popular:hover { transform: scale(1.08); }
         .card.popular h3 { color: var(--accent); }
-        .card.popular .features-list li { color: #ccc; }
+        .card.popular .features-list li { color: #e0e0e0; }
         .card.popular .btn { background: #fff; color: #000; }
+        .card.popular .price span { color: #888; }
 
         .card h3 { margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; }
-        .price { font-size: 56px; font-weight: 800; margin: 24px 0; letter-spacing: -2px; }
-        .price span { font-size: 18px; color: var(--text-muted); font-weight: 400; letter-spacing: 0; }
+        .price { font-size: 48px; font-weight: 800; margin: 24px 0; letter-spacing: -2px; }
+        .price span { font-size: 16px; color: var(--text-muted); font-weight: 400; letter-spacing: 0; }
 
         .features-list { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
         .features-list li { margin-bottom: 16px; font-size: 15px; display: flex; align-items: center; }
-        .features-list li::before { content: "→"; margin-right: 12px; color: var(--primary); font-weight: bold; }
+        .features-list li::before { content: "✓"; margin-right: 12px; color: var(--primary); font-weight: bold; }
 
         .btn { display: block; text-align: center; background: var(--primary); color: #fff; padding: 18px; text-decoration: none; border-radius: 14px; font-weight: 700; transition: 0.3s; font-size: 16px; }
-        .btn:hover { transform: scale(1.02); box-shadow: 0 10px 20px var(--primary-glow); }
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
 
-        footer { border-top: 1px solid var(--card-border); padding: 80px 0 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        footer { border-top: 1px solid var(--card-border); padding: 60px 0 40px; background: #fafafa; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         .footer-logo { font-size: 24px; font-weight: 800; margin-bottom: 16px; display: block; color: #000; text-decoration: none; }
-        .footer-info p { font-size: 14px; color: var(--text-muted); max-width: 300px; }
+        
+        .legal-block { margin-top: 20px; font-size: 13px; color: #444; line-height: 1.8; }
+        .legal-block strong { color: #000; }
+        
         .footer-col h4 { font-size: 14px; text-transform: uppercase; margin-bottom: 24px; color: #000; }
         .footer-col a { display: block; font-size: 14px; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.2s; cursor: pointer; }
         .footer-col a:hover { color: var(--primary); }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 2000; overflow-y: auto; }
-        .modal-inner { background: #fff; margin: 40px auto; padding: 60px; max-width: 800px; border-radius: 32px; position: relative; }
-        .close-modal { position: absolute; top: 30px; right: 30px; font-size: 32px; cursor: pointer; color: #ccc; }
-        .legal-content { font-size: 14px; color: #444; text-align: justify; line-height: 1.8; }
-        .legal-content h1, .legal-content h2 { color: #000; margin-top: 30px; }
+        .payment-logos { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; }
+        .payment-logos img { height: 24px; opacity: 0.7; filter: grayscale(1); transition: 0.3s; }
+        .payment-logos img:hover { opacity: 1; filter: grayscale(0); }
+
+        /* Modal Styles */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; overflow-y: auto; }
+        .modal-inner { background: #fff; margin: 50px auto; padding: 40px; max-width: 800px; border-radius: 24px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .close-modal { position: absolute; top: 20px; right: 25px; font-size: 28px; cursor: pointer; color: #999; transition: 0.2s; }
+        .close-modal:hover { color: #000; }
+        
+        .legal-content h2 { font-size: 20px; margin: 30px 0 15px; color: #000; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .legal-content p { font-size: 14px; color: #444; margin-bottom: 15px; text-align: justify; }
+        .legal-content ul { font-size: 14px; color: #444; margin-bottom: 15px; padding-left: 20px; }
 
         @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 48px; margin-bottom: 32px; }
-            .card { padding: 30px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero h1 { font-size: 40px; }
+            .pricing-grid { gap: 20px; }
+            .card.popular { transform: none; }
+            .modal-inner { width: 92%; margin: 20px auto; padding: 25px; }
         }
     </style>
 </head>
@@ -93,52 +109,55 @@
     <a href="#" class="logo">MuNode</a>
     <div class="nav-links">
         <a href="#pricing">Тарифы</a>
-        <a href="https://t.me/povimu">Поддержка</a>
+        <a href="https://t.me/povimu">Контакты</a>
     </div>
 </nav>
 
 <div class="container">
     <section class="hero">
         <div class="status-badge"><span class="dot"></span> Frankfurt Region Online</div>
-        <h1>Next-Gen Networking.</h1>
-        <p>Аренда выделенных каналов на базе Ryzen 9 9950X. Скорость до 25 Гбит/с. Задержка до минимума.</p>
+        <h1>High-Performance<br>Cloud Infrastructure.</h1>
+        <p>Аренда выделенных вычислительных мощностей на базе Ryzen 9 9950X. <br>Стабильное соединение, высокая скорость, защита данных.</p>
     </section>
 
     <section id="pricing" class="pricing-grid">
+        <!-- Card 1 -->
         <div class="card">
             <h3>Минимум</h3>
             <div class="price">100 ₽ <span>/ мес</span></div>
             <ul class="features-list">
                 <li>Трафик: 50 ГБ</li>
-                <li>Локация: Frankfurt-DE</li>
-                <li>Ryzen 9 9950X Core</li>
-                <li>Порт: 25 Gbps</li>
+                <li>Локация: EU (Frankfurt)</li>
+                <li>Ryzen 9 Core (Shared)</li>
+                <li>Порт: 10 Gbps</li>
             </ul>
             <a href="https://t.me/povimu" class="btn">Подключить</a>
         </div>
 
+        <!-- Card 2 (Popular) -->
         <div class="card popular">
             <h3>Ультра</h3>
             <div class="price">250 ₽ <span>/ мес</span></div>
             <ul class="features-list">
-                <li><b>БЕЗЛИМИТНЫЙ трафик</b></li>
-                <li>Максимальный приоритет</li>
-                <li>Relay-туннелирование</li>
-                <li>Ранний доступ к RU узлу</li>
+                <li><b>Безлимитный трафик</b></li>
+                <li>Высший приоритет CPU</li>
+                <li>Оптимизированная маршрутизация</li>
+                <li>Персональная поддержка</li>
             </ul>
-            <a href="https://t.me/povimu" class="btn">Заказать сейчас</a>
+            <a href="https://t.me/povimu" class="btn">Выбрать лучшее</a>
         </div>
 
+        <!-- Card 3 -->
         <div class="card">
             <h3>Стандарт</h3>
             <div class="price">150 ₽ <span>/ мес</span></div>
             <ul class="features-list">
                 <li>Трафик: 150 ГБ</li>
-                <li>Высокий приоритет</li>
-                <li>Оптимизация под RDP</li>
+                <li>Стандартный приоритет</li>
+                <li>Подходит для RDP/VNC</li>
                 <li>Техподдержка 24/7</li>
             </ul>
-            <a href="https://t.me/povimu" class="btn">Выбрать</a>
+            <a href="https://t.me/povimu" class="btn">Подключить</a>
         </div>
     </section>
 </div>
@@ -148,29 +167,46 @@
         <div class="footer-grid">
             <div class="footer-info">
                 <a href="#" class="footer-logo">MuNode</a>
-                <p>Профессиональная облачная инфраструктура и высокоскоростные сетевые решения.</p>
-                <p style="margin-top: 20px;">
-                    Исполнитель: Шишечкин Владислав Васильевич<br>
-                    ИНН: 564606551823<br>
-                    Email: povimuse@gmail.com<br>
-                    Статус: Самозанятый
-                </p>
+                <p style="font-size: 14px; color: #666;">Сервис аренды облачной инфраструктуры и вычислительных мощностей для ваших задач.</p>
+                
+                <div class="legal-block">
+                    <strong>Исполнитель:</strong> Шишечкин Владислав Васильевич<br>
+                    <strong>ИНН:</strong> 564606551823 (Плательщик НПД)<br>
+                    <strong>Email:</strong> povimuse@gmail.com<br>
+                    <strong>Телефон:</strong> +7 (932) 552-51-62<br> 
+                    <strong>Адрес:</strong> Россия, Оренбургская обл.
+                </div>
+
+                <div class="payment-logos">
+                    <!-- Логотипы (ссылки на CDN Wikimedia/Robokassa) -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.png" alt="MasterCard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Mir-logo.png" alt="MIR">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Sbp_logo.svg" alt="SBP" style="filter: none; opacity: 1;">
+                </div>
             </div>
+            
             <div class="footer-col">
-                <h4>Продукт</h4>
-                <a href="#pricing">Тарифные планы</a>
-                <a href="https://t.me/povimu">Техподдержка</a>
+                <h4>Навигация</h4>
+                <a href="#pricing">Тарифы и услуги</a>
+                <a href="https://t.me/povimu">Служба поддержки</a>
             </div>
+            
             <div class="footer-col">
-                <h4>Юридический отдел</h4>
+                <h4>Документы</h4>
+                <!-- Ссылки на модальные окна -->
                 <a onclick="toggleModal('offer')">Публичная оферта</a>
                 <a onclick="toggleModal('privacy')">Политика конфиденциальности</a>
+                <a onclick="toggleModal('payment')">Оплата и Возврат</a>
             </div>
         </div>
-        <div style="font-size: 12px; color: #aaa; text-align: center;">&copy; 2026 MuNode Cloud Infrastructure.</div>
+        <div style="font-size: 12px; color: #aaa; text-align: center; border-top: 1px solid #eee; padding-top: 20px;">
+            &copy; 2026 MuNode. Все права защищены. Сайт не является публичной офертой до момента акцепта.
+        </div>
     </div>
 </footer>
 
+<!-- Модальное окно -->
 <div id="legalModal" class="modal">
     <div class="modal-inner">
         <span class="close-modal" onclick="toggleModal()">&times;</span>
@@ -182,38 +218,66 @@
     function toggleModal(type) {
         const modal = document.getElementById('legalModal');
         const content = document.getElementById('legalContent');
-        if (!type) { modal.style.display = 'none'; return; }
+        
+        if (!type) { 
+            modal.style.display = 'none'; 
+            document.body.style.overflow = 'auto'; // Включаем прокрутку
+            return; 
+        }
 
-        const legalTexts = {
+        document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+
+        const texts = {
             offer: `
-                <h1>Публичная оферта</h1>
-                <p>Настоящая Публичная оферта является официальным предложением Исполнителя (Шишечкин Владислав Васильевич, ИНН 564606551823) заключить Договор об оказании услуг в соответствии с п. 2 ст. 437 ГК РФ.</p>
-                <h2>1. Предмет договора</h2>
-                <p>Исполнитель обязуется оказать Заказчику Услуги (предоставление доступа к вычислительным мощностям), а Заказчик обязуется оплатить их. Договор считается заключенным с момента совершения Заказчиком акцепта (оплаты или регистрации).</p>
-                <h2>2. Порядок оказания услуг</h2>
-                <p>Услуги оказываются лично Исполнителем или с привлечением третьих лиц. Заказчик получает доступ к ресурсам после совершения конклюдентных действий (оплаты).</p>
-                <h2>3. Ответственность и форс-мажор</h2>
-                <p>Стороны освобождаются от ответственности в случае наступления обстоятельств непреодолимой силы (стихийные бедствия, действия властей). Исполнитель не несет ответственности за сбои по вине Заказчика.</p>
-                <h2>4. Досудебный порядок</h2>
-                <p>Досудебный порядок урегулирования споров является обязательным. Срок рассмотрения претензии — 30 рабочих дней.</p>
-                <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
-                    <strong>Реквизиты Исполнителя:</strong><br>
-                    ФИО: Шишечкин Владислав Васильевич<br>
-                    ИНН: 564606551823<br>
-                    E-mail: povimuse@gmail.com<br>
-                    Telegram: @povimu
-                </div>
+                <h2>Публичная оферта</h2>
+                <p>Настоящий документ является официальным предложением (публичной офертой) физического лица, применяющего специальный налоговый режим «Налог на профессиональный доход» (Самозанятый), <b>Шишечкина Владислава Васильевича</b> (далее — Исполнитель), заключить договор на изложенных ниже условиях.</p>
+                
+                <h3>1. Предмет договора</h3>
+                <p>1.1. Исполнитель обязуется оказать Заказчику услуги по предоставлению доступа к выделенным вычислительным мощностям и облачной инфраструктуре (далее — Услуги) согласно выбранному Тарифу, а Заказчик обязуется оплатить эти Услуги.</p>
+                
+                <h3>2. Порядок оказания услуг</h3>
+                <p>2.1. Услуги предоставляются в электронном виде. После оплаты Заказчик получает инструкции и данные для доступа на указанный при оформлении электронный адрес или мессенджер.</p>
+                <p>2.2. Срок предоставления доступа зависит от выбранного тарифа (1 месяц).</p>
+
+                <h3>3. Стоимость и порядок расчетов</h3>
+                <p>3.1. Стоимость услуг определяется тарифами, опубликованными на сайте.</p>
+                <p>3.2. Оплата производится в рублях РФ в безналичном порядке.</p>
+                
+                <h3>4. Реквизиты Исполнителя</h3>
+                <p>Шишечкин Владислав Васильевич<br>ИНН: 564606551823<br>Email: povimuse@gmail.com</p>
             `,
             privacy: `
-                <h1>Политика конфиденциальности</h1>
-                <p>Исполнитель обеспечивает конфиденциальность и безопасность персональных данных в соответствии с ФЗ № 152-ФЗ «О персональных данных».</p>
-                <p>Данные используются исключительно для качественного оказания Услуг и не передаются третьим лицам без законных оснований.</p>
+                <h2>Политика в отношении обработки персональных данных</h2>
+                <p>1. Исполнитель обрабатывает персональные данные Заказчика (ФИО, Email, Телефон, данные телеграм-аккаунта) исключительно в целях исполнения Договора оферты.</p>
+                <p>2. Исполнитель обязуется не передавать полученные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ (например, по запросу правоохранительных органов).</p>
+                <p>3. Оплата банковскими картами производится через защищенную страницу процессинговой системы Robokassa. Исполнитель не собирает и не хранит полные данные банковских карт Заказчика.</p>
+            `,
+            payment: `
+                <h2>Правила оплаты и безопасности</h2>
+                <p>Оплата происходит через ПАО СБЕРБАНК с использованием банковских карт следующих платёжных систем: МИР, VISA International, Mastercard Worldwide, JCB.</p>
+                
+                <h3>Описание процесса передачи данных</h3>
+                <p>Для оплаты (ввода реквизитов Вашей карты) Вы будете перенаправлены на платёжный шлюз. Соединение с платёжным шлюзом и передача информации осуществляется в защищённом режиме с использованием протокола шифрования SSL. В случае если Ваш банк поддерживает технологию безопасного проведения интернет-платежей Verified By Visa, MasterCard SecureCode, MIR Accept, J-Secure, для проведения платежа также может потребоваться ввод специального пароля.</p>
+                <p>Настоящий сайт поддерживает 256-битное шифрование. Конфиденциальность сообщаемой персональной информации обеспечивается ПАО СБЕРБАНК (или АО "Киви Банк" / Robokassa). Введённая информация не будет предоставлена третьим лицам за исключением случаев, предусмотренных законодательством РФ.</p>
+                
+                <h3>Политика возврата (Refund Policy)</h3>
+                <p>1. В случае неоказания услуги по вине Исполнителя, Заказчик вправе потребовать полного возврата средств.</p>
+                <p>2. Возврат переведённых средств, производится на Ваш банковский счёт в течение 5—30 рабочих дней (срок зависит от Банка, который выдал Вашу банковскую карту).</p>
+                <p>3. Для оформления возврата напишите на povimuse@gmail.com с указанием номера заказа и причины.</p>
             `
         };
-        content.innerHTML = legalTexts[type];
+
+        content.innerHTML = texts[type] || 'Ошибка загрузки контента';
         modal.style.display = 'block';
     }
-    window.onclick = function(event) { if (event.target == document.getElementById('legalModal')) toggleModal(); }
+
+    // Закрытие по клику вне окна
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('legalModal')) {
+            toggleModal();
+        }
+    }
 </script>
+
 </body>
 </html>
